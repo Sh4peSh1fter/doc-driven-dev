@@ -1,0 +1,26 @@
+{
+  "contractVersion": "1.0.0",
+  "pluginVersion": "0.1.0",
+  "createdAt": "2026-06-18",
+  "project": {
+    "name": "doc-driven-dev",
+    "slug": "doc-driven-dev",
+    "repoUrl": "https://github.com/Sh4peSh1fter/doc-driven-dev",
+    "defaultAuthor": "Sean S",
+    "monorepo": false,
+    "packages": []
+  },
+  "core": ["00-workplan", "01-product", "02-engineering", "03-architecture", "11-documentation", "99-archive"],
+  "modules": {
+    "04-frontend": { "enabled": false },
+    "05-backend": { "enabled": false },
+    "06-data": { "enabled": false },
+    "07-ai-system": { "enabled": false },
+    "08-infrastructure": { "enabled": false },
+    "09-security": { "enabled": false },
+    "10-qa": { "enabled": false }
+  },
+  "site": { "enabled": false, "tool": "docusaurus" },
+  "validator": { "path": "docs-tools/check-docs.mjs", "skipDirs": ["99-archive"], "strict": false },
+  "glossaryPath": "glossary.md"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "doc-driven-dev",
+  "description": "Set up and maintain a central, AI-and-human-optimized documentation folder in any repo. Adaptive taxonomy, enforced standards, a zero-dependency validator, a Docusaurus site generator, and agent skills for documentation-driven development.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Sean S",
+    "email": "seanso@cyber.org.il"
+  },
+  "homepage": "https://github.com/Sh4peSh1fter/doc-driven-dev",
+  "repository": "https://github.com/Sh4peSh1fter/doc-driven-dev",
+  "license": "MIT",
+  "keywords": [
+    "documentation",
+    "docs-as-code",
+    "documentation-driven-development",
+    "knowledge-base",
+    "docusaurus",
+    "adr",
+    "agentic",
+    "scaffolding"
+  ]
+}

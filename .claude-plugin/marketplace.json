@@ -1,0 +1,20 @@
+{
+  "name": "doc-driven-dev-marketplace",
+  "owner": {
+    "name": "Sean S",
+    "email": "seanso@cyber.org.il"
+  },
+  "metadata": {
+    "description": "Marketplace for the doc-driven-dev documentation plugin.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "doc-driven-dev",
+      "source": "./",
+      "description": "Set up and maintain a central, AI-and-human-optimized documentation folder in any repo: adaptive taxonomy, enforced standards, a zero-dependency validator, a Docusaurus site generator, and agent skills for documentation-driven development.",
+      "version": "0.1.0",
+      "keywords": ["documentation", "docs-as-code", "knowledge-base", "docusaurus", "adr", "agentic"]
+    }
+  ]
+}

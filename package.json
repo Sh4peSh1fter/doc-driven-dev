@@ -1,0 +1,35 @@
+{
+  "name": "doc-driven-dev",
+  "version": "0.1.0",
+  "description": "Tooling for the doc-driven-dev Claude Code plugin: a zero-dependency documentation validator and repo module detector.",
+  "type": "module",
+  "private": true,
+  "author": "Sean S <seanso@cyber.org.il>",
+  "homepage": "https://github.com/Sh4peSh1fter/doc-driven-dev#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sh4peSh1fter/doc-driven-dev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Sh4peSh1fter/doc-driven-dev/issues"
+  },
+  "keywords": [
+    "documentation",
+    "docs-as-code",
+    "documentation-driven-development",
+    "claude-code",
+    "plugin"
+  ],
+  "bin": {
+    "check-docs": "scripts/check-docs.mjs",
+    "detect-modules": "scripts/detect-modules.mjs"
+  },
+  "scripts": {
+    "test": "node scripts/test/run.mjs && node scripts/test/detect.mjs && node scripts/test/e2e.mjs",
+    "check": "node scripts/check-docs.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

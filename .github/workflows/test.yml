@@ -1,0 +1,24 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    name: Test (Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ["18", "20"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      # The tooling has zero dependencies, so there is nothing to install.
+      - name: Run test suite (validator + detector + e2e)
+        run: npm test
+      - name: Validate this repo's own docs (dogfood)
+        run: node scripts/check-docs.mjs docs --strict

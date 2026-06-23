@@ -1,0 +1,45 @@
+# Documentation validation for doc-driven-dev.
+# Copy to .github/workflows/docs.yml in your repo.
+name: docs
+
+on:
+  pull_request:
+    paths:
+      - "docs/**"
+      - "docs-tools/**"
+      - "docs-site/**"
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - "docs-tools/**"
+      - "docs-site/**"
+
+jobs:
+  validate:
+    name: Validate docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      # Zero-dependency validator — no install step needed.
+      - name: Validate frontmatter and links
+        run: node docs-tools/check-docs.mjs --strict
+
+  build-site:
+    name: Build docs site
+    runs-on: ubuntu-latest
+    # Remove this guard once the site exists; it is harmless to keep.
+    if: ${{ hashFiles('docs-site/package.json') != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install and build (fails on broken links)
+        working-directory: docs-site
+        run: |
+          npm ci || npm install
+          npm run build

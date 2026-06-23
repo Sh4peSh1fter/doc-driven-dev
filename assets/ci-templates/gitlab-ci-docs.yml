@@ -1,0 +1,28 @@
+# Documentation validation for doc-driven-dev (GitLab CI).
+# Merge into your .gitlab-ci.yml.
+docs:validate:
+  image: node:20
+  rules:
+    - changes:
+        - docs/**/*
+        - docs-tools/**/*
+        - docs-site/**/*
+  script:
+    # Zero-dependency validator — no install step needed.
+    - node docs-tools/check-docs.mjs --strict
+
+docs:build-site:
+  image: node:20
+  rules:
+    - exists:
+        - docs-site/package.json
+      changes:
+        - docs/**/*
+        - docs-site/**/*
+  script:
+    - cd docs-site
+    - npm ci || npm install
+    - npm run build   # fails on broken links
+  artifacts:
+    paths:
+      - docs-site/build

@@ -1,0 +1,7 @@
+{
+  "name": "tiny-lib",
+  "version": "1.0.0",
+  "description": "A minimal library with no framework dependencies.",
+  "main": "index.js",
+  "license": "MIT"
+}

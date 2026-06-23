@@ -1,0 +1,10 @@
+{
+  "contractVersion": "1.0.0",
+  "pluginVersion": "0.1.0",
+  "createdAt": "2026-06-17",
+  "project": { "name": "Fixture Fail", "slug": "fixture-fail", "defaultAuthor": "test" },
+  "core": ["03-architecture"],
+  "modules": {},
+  "validator": { "path": "docs-tools/check-docs.mjs", "skipDirs": [] },
+  "glossaryPath": "glossary.md"
+}

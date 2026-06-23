@@ -1,0 +1,10 @@
+{
+  "contractVersion": "1.0.0",
+  "pluginVersion": "0.1.0",
+  "createdAt": "2026-06-17",
+  "project": { "name": "Fixture Pass", "slug": "fixture-pass", "defaultAuthor": "test" },
+  "core": ["01-product"],
+  "modules": {},
+  "validator": { "path": "docs-tools/check-docs.mjs", "skipDirs": [] },
+  "glossaryPath": "glossary.md"
+}

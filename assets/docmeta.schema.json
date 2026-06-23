@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Sh4peSh1fter/doc-driven-dev/assets/docmeta.schema.json",
+  "title": "doc-driven-dev manifest (.docmeta.json)",
+  "description": "Single source of truth for a repo's docs/ tree: contract version, project profile, which core sections and optional modules are enabled, site config, and validator settings. Lives at docs/.docmeta.json and is committed.",
+  "type": "object",
+  "required": ["contractVersion", "pluginVersion", "createdAt", "project", "core", "modules", "validator", "glossaryPath"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "contractVersion": {
+      "type": "string",
+      "description": "Frontmatter/link contract version this docs tree targets (semver). The validator uses it to stay backward-compatible.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "pluginVersion": {
+      "type": "string",
+      "description": "doc-driven-dev version that scaffolded or last touched this tree.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "createdAt": {
+      "type": "string",
+      "description": "ISO 8601 date (YYYY-MM-DD) the docs tree was scaffolded.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "project": {
+      "type": "object",
+      "required": ["name", "slug"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "description": "Human-readable project name." },
+        "slug": { "type": "string", "description": "Kebab-case identifier.", "pattern": "^[a-z0-9-]+$" },
+        "repoUrl": { "type": "string", "description": "Repository URL; used by the Docusaurus editUrl. May be empty." },
+        "defaultAuthor": { "type": "string", "description": "Default frontmatter author for new docs." },
+        "monorepo": { "type": "boolean", "default": false },
+        "packages": {
+          "type": "array",
+          "description": "Workspace package roots when monorepo is true.",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "core": {
+      "type": "array",
+      "description": "Always-scaffolded core section folder names (e.g. 00-workplan).",
+      "items": { "type": "string" }
+    },
+    "modules": {
+      "type": "object",
+      "description": "Optional domain modules keyed by canonical numbered folder name (e.g. 04-frontend).",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["enabled"],
+        "additionalProperties": false,
+        "properties": {
+          "enabled": { "type": "boolean" },
+          "reason": { "type": "string", "description": "Why detection enabled it (e.g. 'react in package.json')." },
+          "paths": {
+            "type": "array",
+            "description": "Code paths this module owns; used by docs-sync to map code changes to docs.",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "site": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": { "type": "boolean", "default": false },
+        "tool": { "type": "string", "enum": ["docusaurus"], "default": "docusaurus" }
+      }
+    },
+    "validator": {
+      "type": "object",
+      "required": ["path"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string", "description": "Path (relative to repo root) where check-docs.mjs was installed." },
+        "skipDirs": {
+          "type": "array",
+          "description": "Folder names (relative to docs/) excluded from validation.",
+          "items": { "type": "string" }
+        },
+        "strict": { "type": "boolean", "description": "Treat advisory warnings as errors.", "default": false }
+      }
+    },
+    "glossaryPath": {
+      "type": "string",
+      "description": "Path to the glossary file relative to docs/.",
+      "default": "glossary.md"
+    }
+  }
+}
