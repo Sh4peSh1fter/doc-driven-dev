@@ -20,7 +20,7 @@
     "09-security": { "enabled": false },
     "10-qa": { "enabled": false }
   },
-  "site": { "enabled": false, "tool": "docusaurus" },
+  "site": { "enabled": true, "tool": "docusaurus" },
   "validator": { "path": "docs-tools/check-docs.mjs", "skipDirs": ["99-archive"], "strict": false },
   "glossaryPath": "glossary.md"
 }

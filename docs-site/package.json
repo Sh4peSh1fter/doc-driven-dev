@@ -1,5 +1,5 @@
 {
-  "name": "{{project_slug}}-docs-site",
+  "name": "doc-driven-dev-docs-site",
   "version": "0.0.0",
   "private": true,
   "scripts": {
